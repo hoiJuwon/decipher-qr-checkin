@@ -13,7 +13,7 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
-      <BrowserRouter basename="https://hoiJuwon.github.io/decipher-qr-checkin">
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={<Participant />} />
           <Route path="admin" element={<Admin />} />
