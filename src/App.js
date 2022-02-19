@@ -13,12 +13,7 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Routes>
-          <Route path="/" element={<Participant />} />
-          <Route path="admin" element={<Admin />} />
-        </Routes>
-      </BrowserRouter>
+      <Participant />
     </Container>
   );
 }
