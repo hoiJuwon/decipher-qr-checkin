@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/decipher-qr-checkin/static/css/main.02286a45.chunk.css",
-    "main.js": "/decipher-qr-checkin/static/js/main.567c565f.chunk.js",
-    "main.js.map": "/decipher-qr-checkin/static/js/main.567c565f.chunk.js.map",
+    "main.js": "/decipher-qr-checkin/static/js/main.4de4c80b.chunk.js",
+    "main.js.map": "/decipher-qr-checkin/static/js/main.4de4c80b.chunk.js.map",
     "runtime-main.js": "/decipher-qr-checkin/static/js/runtime-main.cd9e6081.js",
     "runtime-main.js.map": "/decipher-qr-checkin/static/js/runtime-main.cd9e6081.js.map",
     "static/js/2.9a58d3d8.chunk.js": "/decipher-qr-checkin/static/js/2.9a58d3d8.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.cd9e6081.js",
     "static/js/2.9a58d3d8.chunk.js",
     "static/css/main.02286a45.chunk.css",
-    "static/js/main.567c565f.chunk.js"
+    "static/js/main.4de4c80b.chunk.js"
   ]
 }
