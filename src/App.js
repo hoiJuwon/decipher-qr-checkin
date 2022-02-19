@@ -13,9 +13,9 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
-      <BrowserRouter>
+      <BrowserRouter basename="http://hoiJuwon.github.io/decipher-qr-checkin">
         <Routes>
-          <Route path="/decipher-qr-checkin" element={<Participant />} />
+          <Route path="/" element={<Participant />} />
           <Route path="admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>
