@@ -15,7 +15,7 @@ function App() {
     <Container>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Participant />} />
+          <Route path="/decipher-qr-checkin" element={<Participant />} />
           <Route path="admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>
