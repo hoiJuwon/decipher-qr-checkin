@@ -187,7 +187,11 @@ function Participant() {
   const generateQrHandler = () => {
     // TODO : generateQr with userName
     const userName = getUserNameFromLocalStorage();
-    const id = getIdFromLocalStorage();
+    let id = getIdFromLocalStorage();
+    if (!id || id.length === 0) {
+      setIdToLocalStorage();
+    }
+    id = getIdFromLocalStorage();
     const data = {
       id: id,
       userName: userName,
@@ -197,9 +201,20 @@ function Participant() {
   };
 
   const registerUserName = () => {
+    setInputs({
+      ...inputs,
+      userName: "",
+    });
     setUserNameToLocalStorage(userName);
     setIsNameRegistered(() => true);
     generateQrHandler();
+  };
+
+  const clearUserName = () => {
+    window.localStorage.clear();
+    setIsNameRegistered(() => false);
+    setIsQRGenerated(() => false);
+    setQrData(() => "");
   };
 
   return (
@@ -228,7 +243,9 @@ function Participant() {
           <QRContainer>
             <QRCode value={qrData} fgColor="#FFFFFF" bgColor="transparent" />
           </QRContainer>
-          <RegisterBtn type="submit">이름 재등록하기</RegisterBtn>
+          <RegisterBtn onClick={clearUserName} type="submit">
+            이름 재등록하기
+          </RegisterBtn>
         </>
       )}
     </Container>
