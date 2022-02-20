@@ -146,36 +146,6 @@ function Participant() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /*
-  async function registerUserNameToSheet() {
-    const userName = getUserNameFromLocalStorage();
-    const doc = new GoogleSpreadsheet(
-      "1RtyZo6XUet4WWiH6kneedOonu1pmjPe_sNisnHgZOaQ"
-    );
-    console.log(creds);
-    await doc.useServiceAccountAuth(creds);
-    await doc.loadInfo();
-
-    const date = new Date();
-    const sheetName = `${date.getFullYear()}-${date.getMonth() + 1}-${
-      date.getDay() + 1
-    }`;
-    let sheet = null;
-
-    if (doc.sheetsByTitle[sheetName] === undefined) {
-      sheet = await doc.addSheet({
-        title: sheetName,
-        headerValues: ["name", "date"],
-      });
-    } else {
-      sheet = doc.sheetsByTitle[sheetName];
-    }
-
-    const result = await sheet.addRow({ name: userName, date: new Date() });
-    console.log(result);
-  }
-  */
-
   const onChange = (e) => {
     const { value, name } = e.target;
     setInputs({
@@ -196,8 +166,21 @@ function Participant() {
       id: id,
       userName: userName,
     };
-    setQrData(() => JSON.stringify(data));
+    
     setIsQRGenerated(() => true);
+
+    const qrCode = require('qrcode');
+    const base64 = require('base-64');
+    const utf8 = require('utf8');
+
+    var bytes = utf8.encode(JSON.stringify(data));
+    var encoded = base64.encode(bytes);
+
+    qrCode.toDataURL(encoded, {
+      errorCorrectionLevel: 'H'
+    }, (err, url) => {
+      setQrData(() => url);
+    });
   };
 
   const registerUserName = () => {
@@ -224,6 +207,9 @@ function Participant() {
         <h2>1. 이름등록</h2>
         <h2>2. 현장에서 운영진에게 QR 체크인</h2>
         <p>* 브라우저 캐시 삭제 시 이름을 재등록 해야합니다.</p>
+        
+        {/* <image src="" alt="" style="width:100px; height:100px;"></image> */}
+        
       </InfoWrapper>
       {!isNameRegistered && (
         <NameWrapper>
@@ -240,9 +226,11 @@ function Participant() {
       )}
       {isQRGenerated && (
         <>
-          <QRContainer>
-            <QRCode value={qrData} fgColor="#FFFFFF" bgColor="transparent" />
-          </QRContainer>
+          {/* <QRContainer>
+            <QRCode value={qrData} />
+          </QRContainer> */}
+
+          <img src={qrData} style={{ fgColor: "#FFFFFF", bgColor: "transparent", marginBottom: 30 }}/>
           <RegisterBtn onClick={clearUserName} type="submit">
             이름 재등록하기
           </RegisterBtn>
