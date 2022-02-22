@@ -1,8 +1,8 @@
 decipher qr front
 
 
-###Package install
-> yarn
+### Package install
+> yarn install
 
 
 ###Start react
